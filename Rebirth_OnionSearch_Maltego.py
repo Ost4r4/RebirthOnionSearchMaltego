@@ -8,27 +8,33 @@ from maltego_trx.maltego import UIM_PARTIAL
 import html
 import urllib3
 
-class Rebirth_OnionSearch_Maltego(DiscoverableTransform):
-    
-    proxies = {
-    'http': 'socks5h://localhost:9050',
-    'https': 'socks5h://localhost:9050'
-    }
+class RebirthOnionSearchMaltego(DiscoverableTransform):
 
-    def get_session(self):
+    def get_title(url):
         session = requests.session()
-        session.proxies = self.proxies
-        return session
 
-    def get_title(self, url):
-        session = self.get_session()
+        proxies = {
+        'http': 'socks5h://localhost:9050',
+        'https': 'socks5h://localhost:9050'
+        }
+
+        session.proxies = proxies
+
         response = session.get(url)
         soup = BeautifulSoup(response.content, "html.parser")
         return soup.title.string
 
-    def search_links(self, name):
+    def search_links(name):
         final_all_cleaned_list = []
-        session = self.get_session()
+        session = requests.session()
+
+        proxies = {
+        'http': 'socks5h://localhost:9050',
+        'https': 'socks5h://localhost:9050'
+        }
+
+        session.proxies = proxies
+
         url = f"http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q={name}"
         response = session.get(url)
         soup = BeautifulSoup(response.content, "html.parser")
@@ -82,7 +88,7 @@ class Rebirth_OnionSearch_Maltego(DiscoverableTransform):
         return all_links
 
         return final_all_cleaned_list
-    
+
     @classmethod
     def create_entities(cls, request, response):
         research = request.Value
@@ -97,3 +103,7 @@ class Rebirth_OnionSearch_Maltego(DiscoverableTransform):
                 response.addUIMessage("No result : ", messageType=UIM_PARTIAL)
         except IOError:
             response.addUIMessage("An error has occurred : ", messageType=UIM_PARTIAL)
+
+
+if __name__ == '__main__':
+    RebirthOnionSearchMaltego.searchLink("computer")
