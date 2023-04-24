@@ -34,7 +34,8 @@ class RebirthOnionSearchMaltego(DiscoverableTransform):
         }
 
         session.proxies = proxies
-
+        
+        # Ahmia
         url = f"http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q={name}"
         response = session.get(url)
         soup = BeautifulSoup(response.content, "html.parser")
@@ -53,7 +54,7 @@ class RebirthOnionSearchMaltego(DiscoverableTransform):
             except:
                 pass
 
-        # Haystack Scraper
+        # Haystack
         url = f"http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion/?q={name}"
         response = session.get(url)
         soup = BeautifulSoup(response.content, "html.parser")
@@ -71,7 +72,7 @@ class RebirthOnionSearchMaltego(DiscoverableTransform):
             except:
                 pass
 
-        # Haystack Tormax
+        # Tormax
         url = f"http://o2yumlw2lxbwdtz6ph5beve7celspvf4suqmb3wf5thfjsn7d47wz6ad.onion/search?T={name}"
         response = session.get(url)
         soup = BeautifulSoup(response.content, "html.parser")
