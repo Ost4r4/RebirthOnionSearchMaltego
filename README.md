@@ -34,7 +34,7 @@ maltego
 ```
 Click on "New Local Transform"
 
-![](https://user-images.githubusercontent.com/128547363/232909799-732589dc-d03d-40b9-a784-f568c75f7efa.png)
+![](https://user-images.githubusercontent.com/128547363/234405773-cae801ff-9e40-4f7b-acbf-30bfc571bbc4.png)
 
 Fill parameters
 
